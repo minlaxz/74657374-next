@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default () => (
     <div className={`container`}>
-    <h1>Hello, world! from `implest-dark-mode`</h1>
+    <h3>Hello, world! from `implest-dark-mode`</h3>
         <Link href={`/`}>
             <a>return home</a>
         </Link>
