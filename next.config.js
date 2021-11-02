@@ -1,3 +1,3 @@
 module.exports = {
-    basePath: '/74657374-next',
+    // basePath: '/74657374-next',
 }

@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Hmm Copy A File
 
 on:
   push:
@@ -7,29 +7,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
-      - name: Get files
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install packages
-        run: npm ci
-      - name: Build project
-        run: npm run build
-      - name: Export static files
-        run: npm run export
-        # https://www.linkedin.com/pulse/deploy-nextjs-app-github-pages-federico-antu%C3%B1a#:~:text=You%20might%20be,that%20.nojekyll%20file.
-      - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Copy 📁
+        run: |
+          mkdir -p ./docs/
+          cp ./redirect.html ./docs/index.html
+      
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: github-pages
-          folder: out
+          folder: docs
