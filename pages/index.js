@@ -4,6 +4,7 @@ import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import { getSortedPostsData } from '../lib/posts'
 import Date from '../components/date'
+import Image from 'next/image'
 
 
 export default function Home({ allPostsData }) {
@@ -25,6 +26,14 @@ export default function Home({ allPostsData }) {
                 </p>
             </section>
 
+            <section>
+                <Image
+                    src="https://raw.githubusercontent.com/minlaxz/minlaxz/3b7eb168a2fff76f60e3a763ab8001a47bf26c18/devcard.svg"
+                    alt="dev card"
+                    width={168}
+                    height={336}
+                />
+            </section>
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -50,9 +59,12 @@ export default function Home({ allPostsData }) {
 export async function getStaticProps() {
     // [{ id, date, title }, { id, date, title }]
     const allPostsData = getSortedPostsData()
+    // const avatar = `https://avatars.githubusercontent.com/u/17030412?v=4`
+    // const devCardData = await getDevCardSvg()
     return {
         props: {
-            allPostsData
+            allPostsData,
+            // devCardData
         }
     }
 }
