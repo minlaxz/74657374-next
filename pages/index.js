@@ -6,7 +6,6 @@ import { getSortedPostsData } from '../lib/posts'
 import Date from '../components/date'
 import Image from 'next/image'
 
-
 export default function Home({ allPostsData }) {
     return (
         <Layout home>
@@ -26,14 +25,16 @@ export default function Home({ allPostsData }) {
                 </p>
             </section>
 
-            <section>
+            <div>
                 <Image
+                    placeholder='blur'
+                    blurDataURL='/images/placeholders/devcard.jpg'
                     src="https://raw.githubusercontent.com/minlaxz/minlaxz/3b7eb168a2fff76f60e3a763ab8001a47bf26c18/devcard.svg"
                     alt="dev card"
                     width={168}
                     height={336}
                 />
-            </section>
+            </div>
 
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
