@@ -36,6 +36,14 @@ export default function Home({ allPostsData }) {
                 />
             </div>
 
+            <section>
+                <Link href="/notion/d010556c-092e-44cd-a685-5430bdc61ea2">
+                    <a>
+                        Notion Blog
+                    </a>
+                </Link>
+            </section>
+
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
                 <ul className={utilStyles.list}>
