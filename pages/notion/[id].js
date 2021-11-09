@@ -12,7 +12,8 @@ export async function getStaticProps({ params }) {
         props: {
             blockMap: data,
             indexPage: params.id === 'd010556c-092e-44cd-a685-5430bdc61ea2',
-        }
+        },
+        revalidate: 1, // revalidate after 1 second
     };
 }
 
@@ -35,6 +36,11 @@ export async function getStaticPaths() {
     }
 }
 
+const isEmpty = (obj) => {
+    for (var key in obj) { return false }
+    return true
+}
+
 export default function Notion({ blockMap, indexPage }) {
     return (
         <div style={{
@@ -49,19 +55,28 @@ export default function Notion({ blockMap, indexPage }) {
             {
                 blockMap
                     ?
-                    <>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        margin: "0 auto",
+                        maxWidth: "960px",
+                        padding: "0px 1.0875rem 1.45rem",
+                        paddingTop: 0,
+                        fontFamily: '"Roboto", sans-serif',
+                    }}>
                         <NotionRenderer
                             blockMap={blockMap}
                             mapPageUrl={pageId => `/notion/${pageId}`}
                         />
                         {!indexPage && <Link href="/notion/d010556c-092e-44cd-a685-5430bdc61ea2"><a>&#8592;</a></Link>}
                         {indexPage && <Link href="/"><a>Back to Home</a></Link>}
-                    </>
+                    </div>
                     :
                     <>
-                        <code> This is not an error 😎 but ...</code>
+                        <code> This is not allowed 😎 but you can go back </code>
                         <Link href="/notion/d010556c-092e-44cd-a685-5430bdc61ea2"><a>&#8592;</a></Link>
                     </>
+
             }
 
         </div>
